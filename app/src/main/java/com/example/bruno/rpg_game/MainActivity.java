@@ -12,7 +12,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mGLView = new MyGLSurfaceView(this);
+        mGLView = new GLSurfaceView(this);
+        mGLView.setRenderer(new MyGLRenderer());
         setContentView(mGLView);
     //    setContentView(R.layout.activity_main);
         mVirtualJoystick = new VirtualJoystick(this);
