@@ -1,25 +1,24 @@
 package com.example.bruno.rpg_game;
 
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.opengl.GLSurfaceView;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
+import android.view.SurfaceHolder;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
-    private VirtualJoystick mVirtualJoystick;
+    // OpenGL Surface View
     private GLSurfaceView mGLView;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mGLView = new GLSurfaceView(this);
-        mGLView.setRenderer(new MyGLRenderer());
+        mGLView = new MyGLSurfaceView(this);
         setContentView(mGLView);
-    //    setContentView(R.layout.activity_main);
-        mVirtualJoystick = new VirtualJoystick(this);
-    //    mMainSurfaceView = (GLSurfaceView) findViewById(R.id.main_glSurfaceView);
-    //    mMainSurfaceView.setOnClickListener(this);
-        mVirtualJoystick.run();
     }
 
     @Override
@@ -37,7 +36,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onClick(View view) {
+    public void onPause() {
+        super.onPause();
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 }

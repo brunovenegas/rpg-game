@@ -15,7 +15,7 @@ public class VirtualJoystick extends View implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("Poop");
+        System.out.println("I am down in VirtualJoystick");
     }
 
 }
