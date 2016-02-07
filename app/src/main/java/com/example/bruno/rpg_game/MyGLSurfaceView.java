@@ -28,8 +28,8 @@ public class MyGLSurfaceView extends GLSurfaceView {
     public MyGLSurfaceView(Context context) {
         super(context);
 
-        // Create an OpenGL ES 2.0 Context
-        setEGLContextClientVersion(2);
+        // Create an OpenGL ES 3.0 Context
+        setEGLContextClientVersion(3);
         setRenderer();
         setRenderMode(RENDERMODE_WHEN_DIRTY);
 
