@@ -1,23 +1,15 @@
 package com.example.bruno.rpg_game;
 
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.opengl.GLSurfaceView;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 
-/**
- * Created by venegb1 on 1/21/2016.
- */
+// Surface view to display/handle touch events
 public class MyGLSurfaceView extends GLSurfaceView {
 
     // Renderer
     private MyGLRenderer mRenderer;
-
-    // Instance of Virtual Joystick
-    private VirtualJoystick mVirtualJoystick;
 
     // Touch Coordinates
     float mCoordinateX = 0;
@@ -32,9 +24,6 @@ public class MyGLSurfaceView extends GLSurfaceView {
         setEGLContextClientVersion(3);
         setRenderer();
         setRenderMode(RENDERMODE_WHEN_DIRTY);
-
-        // Instance of the VirtualJoystick
-        mVirtualJoystick = new VirtualJoystick(getContext());
 
         // Surface holder?
         surfaceHolder = getHolder();
@@ -51,18 +40,27 @@ public class MyGLSurfaceView extends GLSurfaceView {
         mCoordinateX = motionEvent.getX();
         mCoordinateY = motionEvent.getY();
 
-        System.out.println("X coordinate: " + mCoordinateX);
-        System.out.println("Y coordinate: " + mCoordinateY);
+        mRenderer.setMotionEvent(motionEvent.getAction(), true);
 
         switch( motionEvent.getAction() ) {
             case MotionEvent.ACTION_DOWN:
-                mVirtualJoystick.run();
+                /*
+                * Send coordinate values and action event to renderer
+                * Renderer will then draw the joystick in touched coordinate
+                * along with redrawing the screen/sprites
+                */
+                mRenderer.setCoordinates(mCoordinateX, mCoordinateY);
+                requestRender();
                 break;
             case MotionEvent.ACTION_MOVE:
-                System.out.println("I am moving");
+                /*
+                * Send coordinates to renderer to do appropriate drawing
+                */
                 break;
             case MotionEvent.ACTION_UP:
-                System.out.println("I am up");
+                /*
+                * Make sure to have joystick disappear
+                */
                 break;
         }
         return true;

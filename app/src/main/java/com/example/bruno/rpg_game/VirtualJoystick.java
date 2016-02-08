@@ -1,21 +1,19 @@
 package com.example.bruno.rpg_game;
 
-import android.content.Context;
-import android.view.View;
+import android.opengl.GLES30;
 
-/**
- * Created by venegb1 on 1/21/2016.
- */
-public class VirtualJoystick extends View implements Runnable {
+// Handles all the joystick mechanics, acts as joystick controller
+// Gets info from MyGLSurfaceView, sends appropriate info to MyGLRenderer to draw joystick
+public class VirtualJoystick {
 
-    public VirtualJoystick(Context context) {
-        super(context);
+    public VirtualJoystick() {
+
     }
 
+    public void draw() {
+        System.out.println("I'M TINY RICK");
 
-    @Override
-    public void run() {
-        System.out.println("I am down in VirtualJoystick");
     }
+
 
 }
