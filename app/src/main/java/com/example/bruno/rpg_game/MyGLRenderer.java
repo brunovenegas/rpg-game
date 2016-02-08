@@ -36,7 +36,7 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
     public void onDrawFrame(GL10 unused) {
         GLES30.glClear(GLES30.GL_COLOR_BUFFER_BIT);
         if((mMotionEvent == MotionEvent.ACTION_DOWN) && mReceivedEvent) {
-            mJoystick.draw();
+            mJoystick.draw(mCoordinateX, mCoordinateY);
             mReceivedEvent = false;
         }
     }
@@ -48,9 +48,9 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
     }
 
     // Sets coordinates
-    public void setCoordinates(float tempX, float tempY) {
-        mCoordinateX = tempX;
-        mCoordinateY = tempY;
+    public void setCoordinates(float xCoord, float yCoord) {
+        mCoordinateX = xCoord;
+        mCoordinateY = yCoord;
     }
 
     public void setMotionEvent(int motionEvent, boolean receivedEvent) {

@@ -6,11 +6,12 @@ import android.opengl.GLES30;
 // Gets info from MyGLSurfaceView, sends appropriate info to MyGLRenderer to draw joystick
 public class VirtualJoystick {
 
+
     public VirtualJoystick() {
 
     }
 
-    public void draw() {
+    public void draw(float xCoord, float yCoord) {
         System.out.println("I'M TINY RICK");
 
     }
