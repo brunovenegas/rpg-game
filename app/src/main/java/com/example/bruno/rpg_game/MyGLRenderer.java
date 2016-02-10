@@ -26,7 +26,7 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
     // This only gets called once, when creating GLSurfaceView
     // Use this when when performing actions that only need to happen once
     public void onSurfaceCreated(GL10 unused, EGLConfig config) {
-        GLES30.glClearColor(0.0f, 0.5f, 1.0f, 1.0f);
+        GLES30.glClearColor(0.0f, 0.5f, 1.0f, 0.0f);
 
         mJoystick = new VirtualJoystick();
     }
@@ -56,6 +56,13 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
     public void setMotionEvent(int motionEvent, boolean receivedEvent) {
         mMotionEvent = motionEvent;
         mReceivedEvent = receivedEvent;
+    }
+
+    public static int loadShader(int type, String shaderCode) {
+        int shader = GLES30.glCreateShader(type);
+        GLES30.glShaderSource(shader, shaderCode);
+        GLES30.glCompileShader(shader);
+        return shader;
     }
 
 }
