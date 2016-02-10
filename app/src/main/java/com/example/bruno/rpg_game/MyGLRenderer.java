@@ -65,4 +65,20 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
         return shader;
     }
 
+    public void clearBuffers(boolean color, boolean depth, boolean stencil) {
+        int bits = 0;
+        if (color) {
+            bits = GLES30.GL_COLOR_BUFFER_BIT;
+        }
+        if (depth) {
+            bits |= GLES30.GL_DEPTH_BUFFER_BIT;
+        }
+        if (stencil) {
+            bits |= GLES30.GL_STENCIL_BUFFER_BIT;
+        }
+        if (bits != 0) {
+            GLES30.glClear(bits);
+        }
+    }
+
 }

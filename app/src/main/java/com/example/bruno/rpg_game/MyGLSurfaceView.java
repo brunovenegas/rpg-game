@@ -61,6 +61,8 @@ public class MyGLSurfaceView extends GLSurfaceView {
                 /*
                 * Make sure to have joystick disappear
                 */
+                mRenderer.clearBuffers(true, true, true);
+                requestRender();
                 break;
         }
         return true;
